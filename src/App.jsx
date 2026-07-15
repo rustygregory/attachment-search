@@ -71,7 +71,7 @@ export default function App() {
   const [activeNavItem, setActiveNavItem] = useState(1)
   const [isSubnavExpanded, setIsSubnavExpanded] = useState(false)
 
-  const [version, setVersion] = useState('v1')
+  const [version, setVersion] = useState('mvp')
 
   const [openTabs, setOpenTabs] = useState([
     { id: 'search', type: 'search', title: 'Search: Refund', closeable: false }
@@ -125,11 +125,11 @@ export default function App() {
                 <Combobox
                   isCompact
                   isEditable={false}
-                  inputValue={version === 'v1' ? 'V1' : 'V2'}
+                  inputValue={version === 'mvp' ? 'MVP' : 'V2'}
                   selectionValue={version}
                   onChange={({ selectionValue }) => { if (selectionValue) setVersion(selectionValue) }}
                 >
-                  <Option value="v1">V1</Option>
+                  <Option value="mvp">MVP</Option>
                   <Option value="v2">V2</Option>
                 </Combobox>
               </Field>

@@ -222,7 +222,7 @@ export default function SearchPage({ onOpenTicket, version }) {
 
   const filteredResults = useMemo(() => searchTickets(allTickets, searchQuery), [searchQuery])
 
-  const visibleColumns = version === 'v2'
+  const visibleColumns = version === 'mvp'
     ? columns.filter(c => c.id !== 'attachment')
     : columns
 
