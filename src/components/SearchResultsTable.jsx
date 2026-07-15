@@ -126,8 +126,19 @@ export default function SearchResultsTable({ results, columns, onOpenTicket, sea
     const cell = e.currentTarget
     hoverTimeoutRef.current = setTimeout(() => {
       const cellRect = cell.getBoundingClientRect()
-      const top = cellRect.bottom + 4
-      const left = cellRect.left
+      const CARD_WIDTH = 360
+      const MARGIN = 12
+      // Keep the card within the viewport horizontally
+      let left = cellRect.left
+      if (left + CARD_WIDTH + MARGIN > window.innerWidth) {
+        left = Math.max(MARGIN, window.innerWidth - CARD_WIDTH - MARGIN)
+      }
+      // Position below the cell, but flip above if it would run off the bottom
+      let top = cellRect.bottom + 4
+      const estimatedHeight = 320
+      if (top + estimatedHeight + MARGIN > window.innerHeight) {
+        top = Math.max(MARGIN, cellRect.top - estimatedHeight - 4)
+      }
       setCardPosition({ top, left })
       setHoveredTicket(ticket)
     }, 400)
@@ -173,7 +184,7 @@ export default function SearchResultsTable({ results, columns, onOpenTicket, sea
             >
               <Td data-no-row-click><Checkbox type="checkbox" aria-label={`Select ticket ${ticket.id}`} /></Td>
               {visibleColumns.map(col => {
-                const isHoverTrigger = col.id === 'status' || col.id === 'subject'
+                const isHoverTrigger = col.id === 'status' || col.id === 'subject' || col.id === 'attachment'
                 return (
                   <Td
                     key={col.id}

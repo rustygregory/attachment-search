@@ -19,7 +19,7 @@ export const allTickets = [
         id: 'att-1',
         filename: 'File_12345.JPEG',
         fileType: 'JPEG',
-        conceptLabel: 'PDF invoice',
+        conceptLabel: 'Purchase receipt',
         summary: 'Receipt entailing a purchase of a Lenovo keyboard model 123 on June 10, 2026.',
         highlightText: 'Refund request for Lenovo keyboard purchase',
       },
